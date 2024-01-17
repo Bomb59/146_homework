@@ -1,61 +1,10 @@
-#Функция для целочисленного деления, т.к в отрицательных числах питоновская работает некорректно
-
-def cel(d1, d2):
-	if d2 > 0:
-		return d1 // d2
-
-	elif d1 % d2 == 0:
-		t = int(d1/d2)
-		return t
-
-	elif d2 < 0 and d1 > 0:
-		t = int(d1/d2)
-		return t
-
-	elif d2 < 0 and d1 < 0:
-		t = int(d1/d2)
-		return t + 1
-
-	else:
-		print('Error')
-		return -1
-
-#Функция для нахождения остатка от деления, т.к в отрицательных числах питоновская работает некорректно
-
-def ost(d1, d2):
-	if d2 > 0:
-		return d1 % d2
-
-	elif d1 % d2 == 0:
-		t = int(d1/d2)
-		t = d1 - t * d2
-		return t
-
-	elif d2 < 0 and d1 > 0:
-		t = int(d1/d2)
-		t = d1 - t * d2
-		return t
-
-	elif d2 < 0 and d1 < 0:
-		t = int(d1/d2)
-		t += 1
-		return d1 - t * d2
-
-	else:
-		print('Error')
-		return -1
-
-#Сам перевод
-
 def sys(num, sys1, sys2):
-	a = "0123456789ABCDEFGHIJK" #Дальше не помню
 	num = int(str(num), sys1)
-
-	if cel(num, sys2) != 0:
-		return sys(cel(num, sys2), sys1, sys2) + a[ost(num, sys2)]
-
+	a = ''.join([chr(__) for __ in range(48, 58)] + [chr(_) for _ in range(65, 91)] + [chr(___) for ___ in range(97, 123)])
+	if num < sys2:
+	    return a[num]
 	else:
-		return a[num]
+	    return sys(num // sys2, sys1, sys2) + a[num % sys2]
 
 while True:
 	a = int(input('0 - для выхода. Число: '))
