@@ -47,18 +47,24 @@ def ost(d1, d2):
 
 #Сам перевод
 
-def sys(num, sys):
-	res = ''
-	while num != 0:
-		res = str(ost(num, sys)) + res
-		num = cel(num, sys)
-	return res
+def sys(num, sys1, sys2):
+	a = "0123456789ABCDEFGHIJK" #Дальше не помню
+	num = int(str(num), sys1)
+
+	if cel(num, sys2) != 0:
+		return sys(cel(num, sys2), sys1, sys2) + a[ost(num, sys2)]
+
+	else:
+		return a[num]
 
 while True:
 	a = int(input('0 - для выхода. Число: '))
 	if a == 0:
 		break
-	b = int(input('0 - для выхода. Система счисления: '))
+	b = int(input('0 - для выхода. Система счисления1: '))
 	if b == 0:
 		break
-	print(sys(a, b))
+	c = int(input('0 - для выхода. Система счисления2: '))
+	if c == 0:
+		break
+	print(sys(a, b, c))
